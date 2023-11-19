@@ -1,3 +1,4 @@
+#!/bin/bash
 module load Mamba/4.14.0-0
 mamba init # only needs to be done once
 source ~/.bashrc # tells mamba where envs are
