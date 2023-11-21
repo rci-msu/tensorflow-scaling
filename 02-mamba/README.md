@@ -1,3 +1,12 @@
 ## Make Mamba Env 
 
-run `mamba env create -f env.yaml`
+run
+
+```bash
+module load Mamba
+mamba init
+source ~/.bashrc
+mamba create -n test-env
+mamba activate test-env
+mamba install python=3.10
+```
