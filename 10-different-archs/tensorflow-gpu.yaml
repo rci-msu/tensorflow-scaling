@@ -1,0 +1,10 @@
+---
+name: tf-gpu-2_13
+channels:
+  - conda-forge
+dependencies:
+  - tensorflow-gpu=2.13
+  - numpy
+  - scikit-learn
+  - matplotlib
+  - ipykernel

@@ -1,0 +1,28 @@
+#!/bin/bash
+##
+## Lines starting with #SBATCH are read by Slurm. Lines starting with ## are comments.
+## All other lines are read by the shell.
+##
+#SBATCH --job-name=tf-gpu            # job name
+#SBATCH --partition=gpupriority      # queue partition to run the job in
+#SBATCH --nodes=1                    # number of nodes to allocate
+#SBATCH --ntasks-per-node=1          # number of discrete tasks - keep at one except for MPI
+#SBATCH --cpus-per-task=2            # number of logical processors to allocate
+#SBATCH --gres=gpu:a40:1
+#SBATCH --mem=30G                     # 2000 MB of Memory allocated; set --mem with care
+#SBATCH --time=0-01:00:00            # Maximum job run time
+#SBATCH --output=tf-gpu-%j.out
+#SBATCH --error=tf-gpu-%j.err
+
+## Run 'man sbatch' for more information on the options above.
+
+date                              # print out the date
+echo "Hello from $(hostname -s)"  # print a message from the compute node
+module load Mamba/4.14.0-0
+source ~/.bashrc # tells mamba where envs are
+mamba activate tf-gpu-2_13 # actiavte env
+
+python hello-tensorflow.py # run a python program
+
+date                              # print the date again
+
