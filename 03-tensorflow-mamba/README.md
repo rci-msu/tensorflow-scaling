@@ -10,6 +10,7 @@ mamba env create -f tensorflow-gpu.yaml # create env based on file
 
 make sure to add the this line in the slurm job file
 ```bash
+export CONDA_OVERRIDE_CUDA="11.2"
 mamba activate tf-gpu-2_13# activate test-env
 ```
 
