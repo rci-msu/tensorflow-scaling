@@ -17,19 +17,8 @@ from tensorflow.keras.layers import Flatten
 from tensorflow.keras.optimizers import SGD
 from tensorflow.keras.callbacks import EarlyStopping
 
-#mirrored_strategy = tf.distribute.MirroredStrategy()
-
+# input into this python script 
 modelNumber = int(sys.argv[1])
-
-## ONLY USE When not in Container
-## Maximum number of threads to use for OpenMP parallel regions.
-#os.environ["OMP_NUM_THREADS"] = str(16)
-## Without setting below 2 environment variables, it didn't work for me. Thanks to @cjw85
-#os.environ["TF_NUM_INTRAOP_THREADS"] = str(8)
-#tf.config.threading.set_intra_op_parallelism_threads(8)
-#os.environ["TF_NUM_INTEROP_THREADS"] = str(16)
-#tf.config.threading.set_inter_op_parallelism_threads(16) 
-#tf.config.set_soft_device_placement(enabled)
 
 # load train and test dataset
 def load_dataset():
@@ -82,28 +71,10 @@ def evaluate_model(dataX, dataY, vb, n_folds, eps):
 		histories.append(history)
 	return scores, histories
  
-# plot diagnostic learning curves
-def summarize_diagnostics(histories):
-	for i in range(len(histories)):
-		# plot loss
-		plt.subplot(2, 1, 1)
-		plt.title('Cross Entropy Loss')
-		plt.plot(histories[i].history['loss'], color='blue', label='train')
-		plt.plot(histories[i].history['val_loss'], color='orange', label='test')
-		# plot accuracy
-		plt.subplot(2, 1, 2)
-		plt.title('Classification Accuracy')
-		plt.plot(histories[i].history['accuracy'], color='blue', label='train')
-		plt.plot(histories[i].history['val_accuracy'], color='orange', label='test')
-	plt.savefig('loss.png')
- 
 # summarize model performance
 def summarize_performance(scores):
 	# print summary
 	print('Accuracy: mean=%.3f std=%.3f, n=%d' % (mean(scores)*100, std(scores)*100, len(scores)))
-	# box and whisker plots of results
-	#plt.boxplot(scores)
-	#plt.savefig('boxplot.png')
  
 # run the test harness for evaluating a model
 def run_test_harness():
@@ -113,8 +84,6 @@ def run_test_harness():
 	trainX, testX = prep_pixels(trainX, testX)
 	# evaluate model
 	scores, histories = evaluate_model(trainX, trainY, 1, 10, 20)
-	# learning curves
-	#summarize_diagnostics(histories)
 	# summarize estimated performance
 	summarize_performance(scores)
  

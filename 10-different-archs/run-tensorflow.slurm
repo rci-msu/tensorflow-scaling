@@ -22,7 +22,7 @@ module load Mamba/4.14.0-0
 source ~/.bashrc # tells mamba where envs are
 mamba activate tf-gpu-2_13 # actiavte env
 
-python hello-tensorflow.py # run a python program
+python mninst.py # run a python program
 
 date                              # print the date again
 
