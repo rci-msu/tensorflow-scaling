@@ -1,6 +1,6 @@
 ## Make Mamba Env 
 
-run the below line or run the bash script make-mamba-env.sh by `bash make-mamba-env.sh`
+run the below lines 
 
 ```bash
 module load Mamba/4.14.0-0 # load the Mamba module
