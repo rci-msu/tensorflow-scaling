@@ -1,3 +1,3 @@
 #!/bin/bash
 
-rm -f *.out *.err *.julia-out
+rm -f *.out *.err *.python-out

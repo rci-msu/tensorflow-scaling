@@ -17,5 +17,5 @@ echo "Hello from $(hostname)"
 module load Julia/1.9.0-linux-x86_64 
 echo ${SLURM_JOBID}
 echo ${SLURM_ARRAY_TASK_ID}
-python3 in-out.jl ${SLURM_ARRAY_TASK_ID} > ${SLURM_JOBID}_${SLURM_ARRAY_TASK_ID}.python-out
+python3 in_out.py ${SLURM_ARRAY_TASK_ID} > ${SLURM_JOBID}_${SLURM_ARRAY_TASK_ID}.python-out
 echo "Ended batch processing at `date`."
