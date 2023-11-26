@@ -21,11 +21,6 @@ echo "Hello from $(hostname -s)"  # print a message from the compute node
 module load Mamba/4.14.0-0
 source ~/.bashrc # tells mamba where envs are
 
-# system python
-mamba deactivate
-which python3 
-python3 --version 
-
 # mamba env python
 mamba activate test-env # actiavte env
 which python3 
