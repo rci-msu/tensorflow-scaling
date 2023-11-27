@@ -21,8 +21,10 @@
 date                              # print out the date
 echo "Hello from $(hostname -s)"  # print a message from the compute node
 module load Mamba/4.14.0-0
+module load cuDNN/8.8.0.121-CUDA-12.0.0
 source ~/.bashrc # tells mamba where envs are
 mamba activate tf-gpu-2_13 # actiavte env
+export XLA_FLAGS=--xla_gpu_cuda_data_dir=$HOME/.conda/envs/tf-gpu-2_13/
 time -p python mnist.py # run a python program
 date                              # print the date again
 
