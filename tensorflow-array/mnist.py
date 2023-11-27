@@ -115,7 +115,7 @@ def run_test_harness():
     # prepare pixel data
     trainX, testX = prep_pixels(trainX, testX)
     # evaluate model
-    scores, histories = evaluate_model(trainX, trainY, 2, 10, 20)
+    scores, histories = evaluate_model(trainX, trainY, 2, 4, 10)
     # summarize estimated performance
     summarize_performance(scores)
 
