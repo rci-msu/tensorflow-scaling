@@ -10,7 +10,7 @@
 #SBATCH --ntasks-per-node=1          # number of discrete tasks - keep at one except for MPI
 #SBATCH --cpus-per-task=32            # number of logical processors to allocate
 #SBATCH --mem=60G                    # 2000 MB of Memory allocated; set --mem with care
-#SBATCH --time=0-01:00:00            # Maximum job run time
+#SBATCH --time=1-00:00:00            # Maximum job run time
 #SBATCH --output=tf-cpu-%A-%3a.out
 #SBATCH --error=tf-cpu-%A-%3a.err
 #SBATCH --array 0-9
