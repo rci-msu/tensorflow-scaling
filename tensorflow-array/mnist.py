@@ -3,7 +3,6 @@ import os
 import sys
 from numpy import mean
 from numpy import std
-from models import define_model
 import tensorflow as tf
 from matplotlib import pyplot as plt
 from sklearn.model_selection import KFold
@@ -49,25 +48,6 @@ def evaluate_model(dataX, dataY, vb, n_folds, eps):
     scores, histories = list(), list()
     # set up early stopping
     es = EarlyStopping(monitor="val_accuracy", mode="min", verbose=1, patience=2)
-    # show model
-    model = Sequential()
-    model.add(
-        Conv2D(
-            32,
-            (3, 3),
-            activation="relu",
-            kernel_initializer="he_uniform",
-            input_shape=(28, 28, 1),
-        )
-    )
-    model.add(MaxPooling2D((2, 2)))
-    model.add(Flatten())
-    model.add(Dense(128, activation="relu", kernel_initializer="he_uniform"))
-    model.add(Dense(10, activation="softmax"))
-    # compile model
-    opt = SGD(learning_rate=0.01, momentum=0.9)
-    model.compile(optimizer=opt, loss="categorical_crossentropy", metrics=["accuracy"])
-    model.summary()
     # prepare cross validation
     kfold = KFold(n_folds, shuffle=True, random_state=1)
     # enumerate splits
@@ -135,7 +115,7 @@ def run_test_harness():
     # prepare pixel data
     trainX, testX = prep_pixels(trainX, testX)
     # evaluate model
-    scores, histories = evaluate_model(trainX, trainY, 1, 10, 20)
+    scores, histories = evaluate_model(trainX, trainY, 2, 10, 20)
     # summarize estimated performance
     summarize_performance(scores)
 

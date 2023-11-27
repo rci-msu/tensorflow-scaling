@@ -4,16 +4,17 @@
 ## All other lines are read by the shell.
 ##
 #SBATCH --job-name=tf-gpu            # job name
-#SBATCH --account=group-rci            # job name
-#SBATCH --partition=gputest      # queue partition to run the job in
+#SBATCH --account=priority-rci            # job name
+#SBATCH --partition=gpupriority      # queue partition to run the job in
 #SBATCH --nodes=1                    # number of nodes to allocate
 #SBATCH --ntasks-per-node=1          # number of discrete tasks - keep at one except for MPI
-#SBATCH --cpus-per-task=2            # number of logical processors to allocate
+#SBATCH --cpus-per-task=8            # number of logical processors to allocate
 #SBATCH --gpus-per-task=1
-#SBATCH --mem=30G                     # 2000 MB of Memory allocated; set --mem with care
+#SBATCH --mem=60G                     # 2000 MB of Memory allocated; set --mem with care
 #SBATCH --time=0-00:05:00            # Maximum job run time
-#SBATCH --output=tf-gpu-%j.out
-#SBATCH --error=tf-gpu-%j.err
+#SBATCH --output=tf-gpu-%A-%3a.out
+#SBATCH --error=tf-gpu-%A-%3a.err
+#SBATCH --array 0-9
 
 ## Run 'man sbatch' for more information on the options above.
 
@@ -22,8 +23,6 @@ echo "Hello from $(hostname -s)"  # print a message from the compute node
 module load Mamba/4.14.0-0
 source ~/.bashrc # tells mamba where envs are
 mamba activate tf-gpu-2_13 # actiavte env
-
-python get_tf_gpu.py # run a python program
-
+time -p python mnist.py # run a python program
 date                              # print the date again
 
