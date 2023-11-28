@@ -14,5 +14,3 @@ Files and what they do
 If you a need anymore help or explanation please let me know. We can schedule a meeting if you want.
 P.S. NIH has a good tutorial [HERE] (https://hpc.nih.gov/docs/job_dependencies.html) if you want learn some more
 
--Alexander Salois-
-
