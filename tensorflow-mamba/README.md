@@ -1,4 +1,4 @@
-## Make Mamba Env 
+## Make TensorFlow Mamba Enviroment 
 
 run the below lines to make tensorflow gpu mamab env
 
