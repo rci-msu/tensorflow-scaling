@@ -1,8 +1,10 @@
-TLDR: run submit-jobs.sh from the directory where the .sbatch files are.
+## Job Dependecy 
+
+To run `./submit-jobs.sh` from the directory where the .slurm files are.
 
 Files and what they do
- -  run-slurm-array.sbatch - launches job array that makes output from python
- -  run-concat-results.sbatch - concatenates all the .python-out files that were made
+ -  run-slurm-array.slurm - launches job array that makes output from python
+ -  run-concat-results.slurm - concatenates all the .python-out files that were made
  -  submit-jobs.sh - launches the job array and set the concat-results to be dependency
  -  in_out.py - print first input argument for python (data generator)
  -  clean-up.sh - deletes files in current directory that ends in .out , .err or .python-out (files no longer needed)
