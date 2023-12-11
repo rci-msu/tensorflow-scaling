@@ -4,15 +4,6 @@
 
 ## Getting started
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
 ```
 cd existing_repo
 git remote add origin https://rci-gitlab.msu.montana.edu/rci-public/tf-scaling.git
@@ -20,29 +11,48 @@ git branch -M main
 git push -uf origin main
 ```
 
-## Integrate with your tools
+## Overview
 
-- [ ] [Set up project integrations](https://rci-gitlab.msu.montana.edu/rci-public/tf-scaling/-/settings/integrations)
+- Git the Code  \comment{give a short description of what each section is about}
+- Hello World Slurm
+- Mamba
+- Job Array
+- Dependency
+- TensorFlow
+- TensorFlow Job Array
+- TensorFlow Different Architectures 
 
-## Collaborate with your team
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+## Software
 
-## Test and Deploy
+### Modules
 
-Use the built-in continuous integration in GitLab.
+To use different software on Tempest RCI has set up modules.
+Modules allow to install many different software on Tempest.
+Installing software in modules allows to have installed software that can work with its dependencies but also not interfere with other software.
+This also allows there to be many different versions.
+Such as we can have GCC (The GNU Compiler Collection) the ubiquitous compiler, to have multiple versions like 10.2, 11.3, 12.2, 13.2, etc, ...
+Use some different software.
+Tempest has modules for software like GCC, Python, MPI, Julia, R, etc, ...
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+### Continers
 
-***
+A container is a standard unit of software that packages up code and all its dependencies into a image that can be easily ran on other platforms.
+Bundled and ready to go, pre-built setup software and workflows.  
+Very Portable and easy to share and replicate precisely.
+We use apptainer on Tempest.
+More info at [Apptainer Website](https://apptainer.org/docs/user/latest/)
+
+### Mamba
+
+"Mamba is a fast, robust, and cross-platform package manager."
+Mamba is effectively a drop in replacement for the conda package manager from Anaconda. 
+It is a way to manage and make Python environments.
+Useful if you want to use both TensorFlow and PyTorch, or need a completely different Python or package versions.
+Solves complex environments for scientific workflows.
+More info at [Mamba Website](https://mamba.readthedocs.io/en/latest/index.html)
+Later we will be using Mamba to make environments for TensorFlow that will work on the GPU and CPU.
+For now look at how we can make an environment that has a specific python in it.
 
 # Editing this README
 
